@@ -19,33 +19,31 @@ const start = async function (text_input) {
 	return completion.data.choices[0].message["content"];
 }
 
-const locales = {
-	pl: 'Witaj Świecie!',
-	de: 'Hallo Welt!',
-	vi: "Xin chào "
-}; //gửi message theo locale
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('search')
 		.setDescription('Bạn hỏi Pepe trả lời!')
-		.addSubcommand(subcommand =>
+		/* .addSubcommand(subcommand =>
 			subcommand
-				.setName('show')
-				.setDescription('Show a message')
+				.setName('search')
+				.setDescription('Tìm kiếm với Pepe')
 				.addStringOption(option =>
-					option.setName('search')
-						.setDescription('The message to show')
+					option
+						.setName('search')
+						.setDescription('Tìm kiếm với Pepe')
 						.setRequired(true)
 				)
-		),
+		), */
+		.addStringOption(option =>
+					option
+						.setName('search')
+						.setDescription('Tìm kiếm với Pepe')
+						.setRequired(true)
+				),
 	async execute(interaction) {
-		
-		if(interaction.options.getSubcommand() === 'show') {
-			await interaction.reply('Pepe đang nghĩ: ....');
-			const result = await start(interaction.options.getString('search'));
-			await interaction.editReply(`Pepe trả lời: ${result}`);
-		} 
+		await interaction.reply('Pepe đang nghĩ: ....');
+		const result = await start(interaction.options.getString('search'));
+		await interaction.editReply(`Pepe trả lời: ${result}`);
 
 		//await interaction.followUp('Pong again!'); 
 		//await interaction.followUp(locales[interaction.locale] ?? 'Hello World (default is english)');
