@@ -23,17 +23,6 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('search')
 		.setDescription('Bạn hỏi Pepe trả lời!')
-		/* .addSubcommand(subcommand =>
-			subcommand
-				.setName('search')
-				.setDescription('Tìm kiếm với Pepe')
-				.addStringOption(option =>
-					option
-						.setName('search')
-						.setDescription('Tìm kiếm với Pepe')
-						.setRequired(true)
-				)
-		), */
 		.addStringOption(option =>
 					option
 						.setName('search')
