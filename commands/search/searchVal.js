@@ -65,10 +65,10 @@ module.exports = {
                         await interaction.editReply({ embeds: [infoEmbed] })
 
                         for(let i = 0; i < 4; i++) {
-                            await interaction.followUp(`Chiêu ${i+1}: ....`);
+                            await interaction.followUp(`Chiêu ${i+1}:`);
                             const infoEmbed_ability  = new EmbedBuilder()
                                 .setColor(0x0099FF)
-                                .setTitle(`Chiêu ${i+1}: ${result.abilities[i].ability_name}`)
+                                .setTitle(`${result.abilities[i].ability_name}`)
                                 .setAuthor({ name: "Nhấp vào để xem video mô tả!", iconURL:result.agent_image.url, url: result.abilities[i].ability_video[0].video.file.url})
                                 .setDescription(result.abilities[i].ability_description)
                                 .setThumbnail(result.abilities[i].ability_icon.url)
